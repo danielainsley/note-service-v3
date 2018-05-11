@@ -1,0 +1,26 @@
+﻿<h1>Notes</h1>
+<p *ngIf="!noteList"><em>Loading...</em></p>
+<p>
+    <a [routerLink]="['/add-note']">Create New</a>
+</p>
+<table class='table' *ngIf="noteList">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Text</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let note of noteList">
+            <td>{{ note.id }}</td>
+            <td>{{ note.text }}</td>
+            <td>{{ note.date }}</td>
+            <td>
+            <td>
+                <a [routerLink]="['/note/edit/', note.id]">Edit</a> |
+                <a [routerLink]="" (click)="delete(note.id)">Delete</a>
+            </td>
+        </tr>
+    </tbody>
+</table>

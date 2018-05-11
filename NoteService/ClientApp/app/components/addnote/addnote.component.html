@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <h1>Notes</h1>
+    <h3>Note</h3>
+    <form [formGroup]="noteForm" (ngSubmit)="save()" novalidate>
+        <div class="form-group row">
+            <label class=" control-label col-md-12" for="Text">Text</label>
+            <div class="col-md-4">
+                <input class="form-control" type="text" formControlName="text">
+            </div>
+            <span class="text-danger" *ngIf="noteForm.hasError('required', 'text') && formDir.submitted">
+                Text is required.
+            </span>
+        </div>
+        <div class="form-group row">
+            <label class="control-label col-md-12" for="Date">Date</label>
+            <div class="col-md-4">
+                <input id="date" type="datetime-local" formControlName="date">
+            </div>
+            <span class="text-danger" *ngIf="noteForm.hasError('required', 'date') && formDir.submitted">
+                Date is required
+            </span>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-default">Save</button>
+            <button class="btn" (click)="cancel()">Cancel</button>
+        </div>
+    </form>
+</body>
+</html>
